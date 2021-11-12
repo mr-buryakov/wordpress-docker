@@ -2,6 +2,8 @@ version: '3.7'
 services:
   mysql:
     image: mariadb
+    ports:
+      - "3306:3306"
     volumes:
       - ./mysql:/var/lib/mysql
     environment:
@@ -9,7 +11,6 @@ services:
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
-    # restart: always
   wordpress:
     image: wordpress:php7.4-fpm-alpine
     volumes:
@@ -25,7 +26,6 @@ services:
       WORDPRESS_TABLE_PREFIX: wp_
     links:
       - mysql
-    # restart: always
   nginx:
     image: nginx:latest
     volumes:
@@ -33,6 +33,6 @@ services:
       - ./html:/var/www/html
       - ./logs:/var/log/nginx
     ports:
-      - 8080:80
+      - "8080:80"
     links:
       - wordpress
