@@ -15,3 +15,6 @@
       #cd logs && grep 500 access.log | wc -l
       go to the directory with nginx logs and grep tall files containing 500 error codes then otput their amount
       ...
+    All variables are needed to finally deploy your stack is in docker-compose.yml file.
+    _______________________________________________________________________________________________________
+    
